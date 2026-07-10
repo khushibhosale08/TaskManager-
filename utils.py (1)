@@ -1,0 +1,2 @@
+from colorama import Fore,Style
+GREEN=Fore.GREEN;RED=Fore.RED;YELLOW=Fore.YELLOW;RESET=Style.RESET_ALL

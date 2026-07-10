@@ -1,0 +1,19 @@
+from task_manager import TaskManager
+from utils import *
+def run():
+ m=TaskManager()
+ while True:
+  print("\n1 Add 2 Edit 3 Delete 4 Search 5 Complete 6 List 7 Stats 0 Exit")
+  c=input("> ")
+  if c=="1":
+    m.add({"title":input("Title:"),"priority":input("Priority:"),"due":input("Due YYYY-MM-DD:"),"completed":False})
+  elif c=="2":
+    i=int(input("Index:"));m.edit(i,{"title":input("New title:")})
+  elif c=="3": m.delete(int(input("Index:")))
+  elif c=="4":
+    print(m.search(input("Query:")))
+  elif c=="5": m.complete(int(input("Index:")))
+  elif c=="6":
+    [print(f"{i}: {(GREEN if t['completed'] else RED)}{t['title']}{RESET} P:{t['priority']} Due:{t['due']}") for i,t in enumerate(m.tasks)]
+  elif c=="7": print(m.stats())
+  elif c=="0": break

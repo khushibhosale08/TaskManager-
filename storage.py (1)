@@ -1,0 +1,6 @@
+import json,os
+FN="tasks.json"
+def load_tasks():
+    if not os.path.exists(FN): return []
+    return json.load(open(FN))
+def save_tasks(t): json.dump(t,open(FN,"w"),indent=2)

@@ -1,0 +1,12 @@
+from storage import load_tasks,save_tasks
+from datetime import date
+class TaskManager:
+    def __init__(self): self.tasks=load_tasks()
+    def add(self,t): self.tasks.append(t);save_tasks(self.tasks)
+    def delete(self,i): self.tasks.pop(i);save_tasks(self.tasks)
+    def edit(self,i,t): self.tasks[i].update(t);save_tasks(self.tasks)
+    def complete(self,i): self.tasks[i]["completed"]=True;save_tasks(self.tasks)
+    def search(self,q): return [t for t in self.tasks if q.lower() in t["title"].lower()]
+    def stats(self):
+        c=sum(t["completed"] for t in self.tasks)
+        return {"total":len(self.tasks),"completed":c,"pending":len(self.tasks)-c}
